@@ -8,9 +8,6 @@ import { get } from "./services";
 import "./App.css";
 
 function App() {
-  const [type, setType] = useState("");
-
-  const [types, setTypes] = useState([]);
 
   const [movies, setMovies] = useState([]);
 
