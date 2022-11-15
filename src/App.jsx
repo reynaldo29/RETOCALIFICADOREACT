@@ -4,6 +4,7 @@ import GlobalStyles from "@mui/material/GlobalStyles";
 import { ThemeProvider } from "@mui/material/styles";
 import { CardMovies } from "./components";
 import { Container } from "@mui/material";
+import { Navbar } from "./components/NavBar";
 
 import { TextField, Typography, Box} from "@mui/material";
 import { get } from "./services";
@@ -45,6 +46,8 @@ function App() {
           body: { backgroundColor: "black" },
         }}
       />
+      
+      <Navbar />
       <Container>
         <Box mt={5}>
           <Typography color="primary" variant="h4" mb={3}>
