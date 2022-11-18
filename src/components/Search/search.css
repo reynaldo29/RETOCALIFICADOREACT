@@ -1,0 +1,18 @@
+.container_search {
+	background-color: #c42521;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px 0;
+}
+.bar_search {
+	background-color: #fff;
+	border-radius: 4px;
+	width: 95%;
+	max-width: 1200px;
+	padding: 8px;
+	border: none;
+	margin-right: auto;
+	margin-left: auto;
+	outline: none;
+}

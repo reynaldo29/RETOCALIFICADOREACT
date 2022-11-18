@@ -5,6 +5,9 @@ import { ThemeProvider } from "@mui/material/styles";
 import { CardMovies } from "./components";
 import { Container } from "@mui/material";
 import { Navbar } from "./components/NavBar";
+import Search from "./components/Search";
+import Footer from "./components/Footer";
+import Paginacion from "./components/Pagination";
 
 import { TextField, Typography, Box} from "@mui/material";
 import { get } from "./services";
@@ -22,6 +25,9 @@ function App() {
 
   const buscador = (e) => {
     setSearch(e.target.value);
+    console.log(e.target.value);
+    console.log(search);
+   
   };
 
 
@@ -39,33 +45,39 @@ function App() {
     getMovies();
   }, []);
 
+  const themeColor = {
+    body: {
+      backgroundColor: "#1A1A1A"
+    }
+  };
+
+
+	const [initialPage, setInitialPage] = useState(0);
+	const [offsetPage, setOffsetPage] = useState(10);
+
+	const handlePage = (initial, offset) => {
+		setInitialPage(initial);
+		setOffsetPage(offset);
+	};
+
+
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles
-        styles={{
-          body: { backgroundColor: "black" },
-        }}
-      />
-      
+        styles={themeColor}/>
       <Navbar />
-      <Container>
-        <Box mt={5}>
-          <Typography color="primary" variant="h4" mb={3}>
-            Peliculas
-          </Typography>
-          <TextField
-            value={search}
-            onChange={buscador}
-            sx={{
-              "& > :not(style)": { m: 1, width: "130ch" },
-              input: { color: '#ffff' }
-            }}
-            id="outlined-basic"
-            variant="outlined"
-          />
-        </Box>
-        <CardMovies movies={resultado} />
-      </Container>
+         <Search search={search} buscador={buscador}/>
+         <Container
+				css={{
+					marginBottom: "2rem",
+				}}
+			>
+        <CardMovies movies={resultado}
+        	{...{ initialPage, offsetPage }} />
+          <Paginacion handlePage ={handlePage}/>
+        </Container>
+      <Footer/>
     </ThemeProvider>
   );
 }

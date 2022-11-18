@@ -1,0 +1,27 @@
+.cardImagen {
+	position: relative;
+}
+
+.cardInfo {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: #000;
+	color: #fff;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	padding: 1rem !important;
+	transition: all 0.25s;
+}
+
+.desc {
+	height: 0;
+	overflow: hidden;
+	transition: all 0.25s;
+}
+.cardImagen:hover .cardInfo {
+	gap: 0;
+}
+.cardImagen:hover .desc {
+	height: auto;
+}
